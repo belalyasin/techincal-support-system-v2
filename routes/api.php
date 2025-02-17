@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\Auth\AuthController;
+use App\Http\Controllers\Api\DefaultMessageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 //Route::post('login', 'AuthController@login');
+  
+Route::apiResource('default-messages', DefaultMessageController::class);
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::middleware('auth:sanctum')->group(function () {
@@ -29,5 +32,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('initiatePhoneChange', [AuthController::class, 'initiatePhoneChange'])->name('initiatePhoneChange');
     Route::post('confirmPhoneChange', [AuthController::class, 'confirmPhoneChange'])->name('confirmPhoneChange');
 });
-//Route::post('me', 'AuthController@me');
+
+
 
