@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -13,7 +12,9 @@ return new class extends Migration
     {
         Schema::create('default_messages', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('parent_id')->constrained('default_messages');
+            $table->foreignId('parent_id')
+                ->nullable()
+                ->constrained('default_messages');
             $table->string('body');
             $table->foreignId('user_id')
                 ->nullable()
