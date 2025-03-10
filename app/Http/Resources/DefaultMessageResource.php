@@ -16,13 +16,14 @@ class DefaultMessageResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $parent_name = DefaultMessage::find($this->parent_id) ?? ' - ';
+        $parent_default_message = DefaultMessage::find($this->parent_id) ?? ' - ';
         $parent_id = $this->parent_id ?? ' - ';
+//        dd($this->parent);
 //        return parent::toArray($request);
         return [
             'id' => $this->id,
             'body' => $this->body,
-            'parent_name' => $parent_name,
+            'parent_name' => $this->parent?->body ?? ' - ',
             'parent_id' => $parent_id,
             'user_id' => Auth::id() ?? '',
             'created_at' => $this->created_at,
