@@ -18,8 +18,15 @@ class DefaultMessageController extends Controller
     public function index()
     {
         $default_messages = DefaultMessage::with(['parent', 'user'])
+//        $default_messages = DefaultMessage::leftJoin('default_messages as parents', 'parents.id', '=', 'default_messages.parent_id')
+//            ->select([
+//                'default_messages.*', 'parents.body as parent_name'
+//            ])
+            ->select('default_messages.*')
+            ->orderBy('body')
             ->paginate();
 
+//        dd($default_messages);
         return new DefaultMessageCollection($default_messages);
     }
 
