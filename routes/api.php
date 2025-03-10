@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\DefaultMessageController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+
+Route::apiResource('default-messages', DefaultMessageController::class);
 
 //Route::post('login', 'AuthController@login');
 
@@ -31,6 +32,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('initiatePhoneChange', [AuthController::class, 'initiatePhoneChange'])->name('initiatePhoneChange');
     Route::post('confirmPhoneChange', [AuthController::class, 'confirmPhoneChange'])->name('confirmPhoneChange');
 });
+
 
 
 
