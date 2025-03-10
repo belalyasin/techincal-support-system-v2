@@ -20,6 +20,7 @@ class DefaultMessageController extends Controller
         $default_messages = DefaultMessage::with(['parent', 'user'])
             ->paginate();
 
+//        dd($default_messages);
         return new DefaultMessageCollection($default_messages);
     }
 
