@@ -31,8 +31,8 @@ class DefaultMessage extends Model
 
     public function scopeFilter(Builder $builder, $filters): void
     {
-        $builder->when($filters['name'] ?? false, function (Builder $builder, $value) {
-            $builder->where('default_messages.name', 'like', '%' . $value . '%');
+        $builder->when($filters['body'] ?? false, function (Builder $builder, $value) {
+            $builder->where('default_messages.body', 'like', '%' . $value . '%');
         });
     }
 
